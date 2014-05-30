@@ -7,13 +7,14 @@
 </body>
 
 <template name="hello">
-  <button>Randomly change</button>
-  {{#with greeting}}
-  {{> blah greeting}}
+  <button class="changefoo">Randomly change foo</button>
+  <button class="changebar">Randomly change bar</button>
+  <button class="changeboth">Randomly change both</button>
+
+  {{#with foo}}
+  {{ bar }}
   {{/with}}
 </template>
 
-<template name="blah">
-  {{this}}
-</template>
+
 

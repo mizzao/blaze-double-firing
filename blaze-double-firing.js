@@ -1,18 +1,32 @@
 if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-      greeting = Session.get("greeting");
-      console.log("value: " + greeting, "context: " + JSON.stringify(this));
-      return greeting;
+  Template.hello.foo = function () {
+      foo = Session.get("foo");
+      console.log("foo value: " + foo, "context: " + JSON.stringify(this));
+      return foo;
   };
 
+    Template.hello.bar = function () {
+      bar = Session.get("bar");
+      console.log("bar value: " + bar, "context: " + JSON.stringify(this));
+      return bar;	
+    };
+
   Template.hello.events({
-    'click button': function () {
-	Session.set("greeting", Random.id());
-    }
+    'click .changefoo': function () {
+	Session.set("foo", Random.id());
+    },
+    'click .changebar': function () {
+	Session.set("bar", Random.id());
+    },
+      'click .changeboth': function() {
+	Session.set("foo", Random.id());
+	Session.set("bar", Random.id());
+      }
   });
 
     Meteor.startup(function() {
-	Session.set("greeting", Random.id());
+	Session.set("foo", Random.id());
+	Session.set("bar", Random.id());
     });
 }
 
